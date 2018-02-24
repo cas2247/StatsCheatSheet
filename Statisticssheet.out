@@ -1,0 +1,62 @@
+\BOOKMARK [1][-]{section*.1}{Ch 1: Overview \046 Descriptive Stats}{}% 1
+\BOOKMARK [2][-]{section*.2}{Populations, Samples and Processes}{section*.1}% 2
+\BOOKMARK [2][-]{section*.3}{Measures of Location}{section*.1}% 3
+\BOOKMARK [2][-]{section*.4}{Measures of Variability}{section*.1}% 4
+\BOOKMARK [3][-]{section*.5}{Box Plots}{section*.4}% 5
+\BOOKMARK [1][-]{section*.6}{Ch 2: Probability}{}% 6
+\BOOKMARK [2][-]{section*.7}{Sample Space and Events}{section*.6}% 7
+\BOOKMARK [2][-]{section*.8}{Axioms, Interpretations and Properties of Probability}{section*.6}% 8
+\BOOKMARK [3][-]{section*.9}{Axioms \046 Properties of Probability:}{section*.8}% 9
+\BOOKMARK [2][-]{section*.10}{Counting Techniques}{section*.6}% 10
+\BOOKMARK [2][-]{section*.11}{Conditional Probability}{section*.6}% 11
+\BOOKMARK [3][-]{section*.12}{Baye's Theorem}{section*.11}% 12
+\BOOKMARK [2][-]{section*.13}{Independence}{section*.6}% 13
+\BOOKMARK [2][-]{section*.14}{Random Variables}{section*.6}% 14
+\BOOKMARK [1][-]{section*.15}{1. Distributions}{}% 15
+\BOOKMARK [2][-]{section*.16}{Discrete RVs}{section*.15}% 16
+\BOOKMARK [3][-]{section*.17}{Cumulative Distribution Function}{section*.16}% 17
+\BOOKMARK [2][-]{section*.18}{Continuous RVs}{section*.15}% 18
+\BOOKMARK [2][-]{section*.19}{Discrete Distributions}{section*.15}% 19
+\BOOKMARK [3][-]{section*.20}{The Binomial Probability Distribution}{section*.19}% 20
+\BOOKMARK [3][-]{section*.21}{Negative Binomial Distribution}{section*.19}% 21
+\BOOKMARK [3][-]{section*.22}{Geometric Distribution}{section*.19}% 22
+\BOOKMARK [3][-]{section*.23}{The Poisson Probability Distribution}{section*.19}% 23
+\BOOKMARK [2][-]{section*.24}{Continuous Distributions}{section*.15}% 24
+\BOOKMARK [3][-]{section*.25}{The Normal Distribution, X N\(, 2\)}{section*.24}% 25
+\BOOKMARK [3][-]{section*.26}{The Exponential Distribution, X Exp\(\)}{section*.24}% 26
+\BOOKMARK [2][-]{section*.27}{Joint Probability Dist}{section*.15}% 27
+\BOOKMARK [2][-]{section*.28}{Expected Values, Covariance \046 Correlation}{section*.15}% 28
+\BOOKMARK [2][-]{section*.29}{Stats \046 Their Distributions}{section*.15}% 29
+\BOOKMARK [3][-]{section*.30}{Fxns of Observed Sample Observ}{section*.29}% 30
+\BOOKMARK [2][-]{section*.31}{The Dist \045 Sample Mean}{section*.15}% 31
+\BOOKMARK [3][-]{section*.32}{Distribution of The Sample Mean }{section*.31}% 32
+\BOOKMARK [3][-]{section*.33}{Dist of a Linear Combination}{section*.31}% 33
+\BOOKMARK [1][-]{section*.34}{2. Estimators}{}% 34
+\BOOKMARK [2][-]{section*.35}{Estimators}{section*.34}% 35
+\BOOKMARK [3][-]{section*.36}{Method of Moments}{section*.35}% 36
+\BOOKMARK [3][-]{section*.37}{Maximum Likelihood Estimator}{section*.35}% 37
+\BOOKMARK [1][-]{section*.38}{3. Confidence Intervals}{}% 38
+\BOOKMARK [2][-]{section*.39}{Tests in a single sample}{section*.38}% 39
+\BOOKMARK [3][-]{section*.40}{When measuring n random variables Yi i.i.d.}{section*.39}% 40
+\BOOKMARK [3][-]{section*.41}{When measuring two variables for each unit \(Xi,Yi \) i.i.d.}{section*.39}% 41
+\BOOKMARK [2][-]{section*.42}{Tests in two non-paired, independent samples }{section*.38}% 42
+\BOOKMARK [1][-]{section*.43}{4. Hypothesis Testing}{}% 43
+\BOOKMARK [2][-]{section*.44}{Power Function}{section*.43}% 44
+\BOOKMARK [2][-]{section*.45}{Hypotheses and Test Procedures}{section*.43}% 45
+\BOOKMARK [3][-]{section*.46}{Tests About a Population Mean}{section*.45}% 46
+\BOOKMARK [2][-]{section*.47}{Tests about a Population Mean}{section*.43}% 47
+\BOOKMARK [3][-]{section*.48}{Case1: A Normal Population with a Known }{section*.47}% 48
+\BOOKMARK [1][-]{section*.49}{5. Simple Linear Regression and Correlation}{}% 49
+\BOOKMARK [2][-]{section*.50}{Model and Summary Statistics}{section*.49}% 50
+\BOOKMARK [2][-]{section*.51}{Estimation of Model Parameters}{section*.49}% 51
+\BOOKMARK [2][-]{section*.52}{Estimating 2}{section*.49}% 52
+\BOOKMARK [2][-]{section*.53}{Goodness of fit}{section*.49}% 53
+\BOOKMARK [2][-]{section*.54}{Inference for Model Parameters}{section*.49}% 54
+\BOOKMARK [1][-]{section*.55}{6. Goodness of Fit}{}% 55
+\BOOKMARK [2][-]{section*.56}{Basics}{section*.55}% 56
+\BOOKMARK [2][-]{section*.57}{Population Mean \(if variance unknown\)}{section*.55}% 57
+\BOOKMARK [2][-]{section*.58}{General Confidence Intervals}{section*.55}% 58
+\BOOKMARK [2][-]{section*.59}{Steps for calculating Confidence Intervals}{section*.55}% 59
+\BOOKMARK [2][-]{section*.60}{Intervals Based on a Normal Population}{section*.55}% 60
+\BOOKMARK [2][-]{section*.61}{One-Sided Confidence Bounds}{section*.55}% 61
+\BOOKMARK [2][-]{section*.62}{CI for the Variance of a Normal Population}{section*.55}% 62

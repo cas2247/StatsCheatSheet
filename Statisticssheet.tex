@@ -1,0 +1,851 @@
+\documentclass[10pt,landscape]{article}
+\usepackage{multicol}
+\usepackage{calc}
+\usepackage{ifthen}
+\usepackage[landscape]{geometry}
+\usepackage{hyperref}
+\usepackage{amsmath, amssymb}
+\usepackage{bbm}
+
+\newenvironment{proof}[1][Proof]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{definition}[1][Definition]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{example}[1][Example]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+\newenvironment{remark}[1][Remark]{\begin{trivlist}
+\item[\hskip \labelsep {\bfseries #1}]}{\end{trivlist}}
+
+% To make this come out properly in landscape mode, do one of the following
+% 1.
+%  pdflatex Statisticscheat.tex
+%
+% 2.
+%  latex Statisticscheat.tex
+%  dvips -P pdf  -t landscape Statisticscheat.dvi
+%  ps2pdf Statisticscheat.ps
+
+
+
+
+
+
+% This sets page margins to .5 inch if using letter paper, and to 1cm
+% if using A4 paper. (This probably isn't strictly necessary.)
+% If using another size paper, use default 1cm margins.
+\ifthenelse{\lengthtest { \paperwidth = 11in}}
+	{ \geometry{top=.5in,left=.5in,right=.5in,bottom=.5in} }
+	{\ifthenelse{ \lengthtest{ \paperwidth = 297mm}}
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+		{\geometry{top=1cm,left=1cm,right=1cm,bottom=1cm} }
+	}
+
+% Turn off header and footer
+\pagestyle{empty}
+ 
+
+% Redefine section commands to use less space
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%x
+                                {\normalfont\large\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{0mm}%
+                                {-1explus -.5ex minus -.2ex}%
+                                {0.5ex plus .2ex}%
+                                {\normalfont\normalsize\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{0mm}%
+                                {-1ex plus -.5ex minus -.2ex}%
+                                {1ex plus .2ex}%
+                                {\normalfont\small\bfseries}}
+\makeatother
+
+% Define BibTeX command
+\def\BibTeX{{\rm B\kern-.05em{\sc i\kern-.025em b}\kern-.08em
+    T\kern-.1667em\lower.7ex\hbox{E}\kern-.125emX}}
+
+% Don't print section numbers
+\setcounter{secnumdepth}{0}
+
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt plus 0.5ex}
+
+
+% -----------------------------------------------------------------------
+
+\begin{document}
+
+\raggedright
+\footnotesize
+\begin{multicols}{3}
+
+
+% multicol parameters
+% These lengths are set only within the two main columns
+%\setlength{\columnseprule}{0.25pt}
+\setlength{\premulticols}{1pt}
+\setlength{\postmulticols}{1pt}
+\setlength{\multicolsep}{1pt}
+\setlength{\columnsep}{2pt}
+
+\begin{center}
+     \Large{\textbf{Statistics Cheat Sheet}} \\
+\end{center}
+
+\section{Ch 1: Overview \& Descriptive Stats}
+	\subsection{Populations, Samples and Processes}
+\begin{tabular}{@{}ll@{}}
+\verb!Population:! well-defined collection of objects\\
+\verb!Sample:! a subset of the population\\
+\verb!Descriptive Stats:! summarize \& describe features of data\\
+\verb!Inferential Stats:! generalizing from sample to population\\
+\verb!Probability:! bridge btwn descriptive \& inferential techniques. \\In probability, properties of the population are assumed known \& \\questions regarding a sample taken from the population are posed\\ and answered.\\
+\verb!Discrete and Continuous Variables:! A numerical variable is\\ $discrete$ if its set of possible values is at most countable. \\A numerical value is $continuous$ if its set of possible values is\\ an uncountable set.\\
+\end{tabular}	
+Probability: pop $\to$ sample\\
+Stats: sample $\to$ pop\\
+%	
+%	\subsection{Pictorial and Tabular Methods in Descriptive Statistics}
+%
+%		\subsubsection{1. Stem-and-Leaf Displays}
+%		\subsubsection{2. Dotplots}
+%		\subsubsection{3. Histograms}
+%		
+%\verb!relative frequency:!$= \frac{\text{number of times the value occurs}}{\text{number of observations in the data set}}$
+%
+%To construct a Histogram for Discrete Data determine the frequency and relative frequency of each x value.  Mark the possible x values on a horizontal scale.  Above each value, draw a rectangle whose height is the relative frequency of that value.
+%			
+%			To construct a Histogram for Continuous data we must construct equal class widths.  Determine the frequency and relative frequency for each class. Mark the class boundaries on a horizontal axis.  Above each class interval, draw a rectangle whose height is the corresponding relative frequency.  Roughly $\text{number of classes} \approx \sqrt{\text{no of observations}}$
+%			For unequal class widths, calculate the height of each rectangle using rectangle height $= \frac{\text{rel. freq of the class}}{\text{class width}}$. This is a density scale.	
+
+	\subsection{Measures of Location}
+	
+	For observations $x_1, x_2, \cdots, x_n$
+	
+	\begin{tabular}{@{}ll@{}}
+		\verb!Sample Mean!	& $\bar{x} = \frac{\sum_{1=1}^{n} x_i}{n}$\\
+		\verb!Sample Median!	& $\tilde x = ( \frac{n+1}{2} )^{\text{nth}}$ {\scriptsize observation}\\
+		\verb!Trimmed Mean!	& btwn $\tilde x$ and $\bar{x}$, compute by removing\\
+		&smallest and largest observations\\
+	\end{tabular}
+	
+	\subsection{Measures of Variability}
+	\begin{tabular}{@{}ll@{}}
+		\verb!Range!	&=lgst-smllst observation\\
+		\verb!Sample Variance,! $\sigma^2$& $= \frac{\sum (x_{i} - \bar x))^2}{n-1} = \frac{S_{xx}}{n-1}$\\
+		$S_{xx}$&$ = \sum x_{i}^2 - \frac{(\sum x_i)^2}{n}$\\
+		\verb!Sample Standard Deviation,! $\sigma$& $= \sqrt{\sigma^2}$\\
+	\end{tabular}
+	
+	\subsubsection{Box Plots}
+	Order the n observations from small to large.  Separate the smallest half from the largest (If n is odd then $\tilde x$ is in both halves).  The lower fourth is the median of the smallest half (upper fourth..largest..).  A measure of the spread that is resistant to outliers is the \emph{fourth spread} $f_s$ given by $f_s =$ upper fourth- lower fourth.  Box from lower to upper fourth with line at median. Whiskers from smallest to largest $x_i$.
+
+
+\section{Ch 2: Probability}
+
+	\subsection{Sample Space and Events}
+	\begin{tabular}{@{}ll@{}}
+		\verb!Experiment!	& activity with uncertain outcome\\
+		\verb!Sample Space!($\mathcal{S}$)	&the set of all possible outcomes\\
+		\verb!Event!& any collection of outcomes in $\mathcal{S}$\\
+	\end{tabular}
+	\subsection{Axioms, Interpretations and Properties of Probability}
+	Given an experiment and a sample space $\mathcal{S}$, the objective probability is to assign to each event $A$ a number $P(A)$, called the probability of event $A$, which will give a precise measure of the chance that $A$ will occur. Behaves very much like norm.
+	
+	\subsubsection{Axioms \& Properties of Probability:}
+	{\scriptsize
+		\begin{enumerate}
+			\item $\forall A \in \mathcal{S},  0 \leq P(A) \leq 1 $
+			\item $P(\mathcal{S})=1$
+			\item If $A_1 , A_2, \ldots$ is an infinite collection of disjoint events,
+			$P(A_1 \cup A_2 \cup \cdots ) = \sum_{i=1}^{\infty}P(A_i)$
+			\item $P(\emptyset) =0$
+			\item $\forall A, P(A) + P(A') = 1$ from which $P(A)= 1-P(A')$
+			\item For any two events $A,B \in \mathcal{S},$
+			$P(A \cup B) = P(A) + P(B) - P(A\cap B)	$
+			\item For any three events $A,B,C \in \mathcal{S}, 
+			P(A \cup B \cup C) = P(A) + P(B) + P(C) - P(A\cap B) - P(A\cap C) - P(B \cap C) + P(A \cap B \cap C)$
+		\end{enumerate}}
+		Equally Likely Outcomes : $ P(A) = \frac{N(A)}{N}$
+	\subsection{Counting Techniques}
+	\verb!Product Rule for Ordered k-Tuples:!   If the first element can be selected in $n_1$ ways, the second in $n_2$ ways and so on, then there are $n_1  n_2 \cdots n_k$ possible k-tuples.\\
+	\verb!Permutations:! An ordered subset. The number of permutations of size $k$ that can be formed from a set of $n$ elements is $P_{k,n}$\\
+		{\footnotesize$\qquad \qquad  P_{k,n} = (n)(n-1)\cdots(n-k+1) = \frac{n!}{(n-k)!}$}\\
+	\verb!Combinations:! An unordered subset.\\
+		{\footnotesize$\qquad \qquad \qquad {n \choose k} = \frac{P_{k,n}}{k!} = \frac{n!}{k! (n-k)!}$}
+	\subsection{Conditional Probability}
+	$P(A|B)$ is the conditional probability of A given that the event B has occurred.  B is the conditioning event.\\
+	{\scriptsize$$\qquad \qquad P(A|B) = \frac{P(A\cap B)}{P(B)}$$}\\
+	
+	Multiplication Rule: $P(A\cap B) = P(A|B) \cdot P(B)$  
+	\subsubsection{Baye's Theorem}
+	Let $A_1 , A_2, \ldots, A_k$ be disjoint and exhaustive events (that partition the sample space).  Then for any other event B
+		$  P(B) = P(B|A_1)P(A_1) + \cdots +P(B|A_k)P(A_k) $\\
+		$\qquad\quad=\sum_{i=1}^{k} P(B|A_i)P(A_i)  $
+	
+	
+	
+	\subsection{Independence}
+		Two events $A$ and $B$ are \verb!independent! if $P(A|B) = P(A)$ and are \verb!dependent! otherwise.
+		
+		$A$ and $B$ are \verb!independent! iff $P(A\cap B) = P(A) \cdot P(B)$ and this can be generalized to the case of $n$ mutually independent events.
+		\subsection{Random Variables}
+
+\setlength{\tabcolsep}{1.5pt}
+\begin{tabular}{@{}ll@{}}
+
+\verb!Random Variable!:&  any function $X:\Omega \to \mathbb{R}$\\
+\verb!Prob Dist.!:& describes how the probability of $\Omega$ is \\
+& distributed along the range of X \\
+\verb!Discrete rv!:&  rv whose domain is at most countable\\
+\verb!Continuous rv!:& rv whose domain is uncountable \\
+&and where $\forall c \in \mathbb{R}, P(X=c)=0$\\
+\verb!Bernoulli rv!:& discrete rv whose range is $\{0,1\}$\\
+
+\end{tabular}\\
+
+The \emph{probability distribution of X} says how the total probability of 1 is distributed among the various possible X values.
+
+
+		
+\section{1. Distributions}
+
+
+\subsection{Discrete RVs}
+Probabilities assigned to various outcomes in $\mathcal{S}$ in turn determine probabilities associated with the values of any particular rv $X$.  
+
+
+\smallskip
+\verb!Probability Mass Fxn/Probability Distribution,(pmf)!:
+$$p(x)= P(X=x) = P(\forall w \in \mathcal{W}: X(w)=x)$$
+
+Gives the probability of observing $w \in \mathcal{W}: X(w)=x$\\
+ The conditions $p(x) \geq 0$ and $\sum_{\text{all possible x}}p(x)=1$ are required for any pmf.
+
+\verb!parameter:! Suppose p(x) depends on a quantity that can be assigned any one of a number of possible values, with each different value determining a different probability distribution.  Such a quantity is called a parameter of distribution.  The collection of all probability distributions for different values of the parameter is called a family of probability distributions.
+
+\subsubsection{Cumulative Distribution Function}
+(To compute the probability that the observed value of X will be at most some given x)
+\smallskip
+\verb!Cumulative Distribution Function(cdf):! 
+$F(x)$ of a discrete rv variable $X$ with pmf $p(x)$ is defined for every number $x$ by
+$$F(x) = P(X \leq x) = \sum_{y: y \leq x} p(y)$$
+For any number $x, F(x)$ is the probability that the observed value of X will be at most $x$.\\
+
+For discrete rv, the graph of $F(x)$ will be a step function- jump at every possible value of X and flat btwn possible values.
+
+For any two number $a$ and $b$ with $a \leq b$:\\
+$P(a \leq X \leq b) = F(b) - F(a^{-}) $\\
+$P(a < X \leq b) = F(b) - F(a) $\\
+$P(a \leq X \leq a) = F(a) - F(a^{-}) =p(a)$\\
+$P(a < X < b) = F(b^{-}) - F(a) $\\
+(where $a^-$ is the largest possible X value strictly less than $a$)\\
+Taking $a=b$ yields $P(X=a) = F(a) - F(a-1)$ as desired.
+\smallskip
+\verb!Expected value or Mean Value!\\
+$$E(X) = \mu_{X} = \sum_{x \in D} x \cdot p(x)$$ 
+
+Describes where the probability distribution is centered and is just a weighted average of the possible values of X given their distribution.  However, the sample average of a sequence of X values may not settle down to some finite number (harmonic series) but will tend to grow without bound. Then the distribution is said to have a \emph{heavy tail}. Can make if difficult to make inferences about $\mu$.
+
+\verb!The Expected Value of a Function!:  
+Sometimes interest will focus on the expected value of some function $h(x)$ rather than on just $E(x)$.
+
+If the RV $X$ has a set of possible values $D$ and pmf $p(x)$, then the expected value of any function $h(x)$, denoted by $E[h(X)]$ or $\mu_{h(X)}$ is computed by\\
+$$E[h(X)] = \sum_{D}h(x) \cdot p(x)$$
+\verb!Properties of Expected Value!: 
+		$$E(aX+b) = a \cdot E(X) + b$$
+
+\verb!Variance of X!:  Let X have pmf $p(x)$ and expected value $\mu$.  Then the $ V(X)$ or $\sigma_{X}^2$ is
+$$V(X) = \sum_{D}(x-\mu)^2 \cdot p(x) = E[(X-\mu)^2]$$
+The standard deviation (SD) of X is $\sigma = \sqrt{\sigma}$\\
+Alternatively,
+$$ V(X) = \sigma^2 = \big[\sum_{D}x^2 \cdot p(x)\big] - \mu^2 = E(X^2) - [E(X)]^2$$
+\verb!Properties of Variance!
+\begin{enumerate}
+	\item $V(aX + b) = a^2 \cdot \sigma^2$
+	\item In particular, $\sigma_{aX} = |a| \cdot \sigma_{x}$
+	\item $\sigma_{X+b} = \sigma_{X}$
+\end{enumerate}
+
+
+
+\subsection{Continuous RVs}
+Probabilities assigned to various outcomes in $\mathcal{S}$ in turn determine probabilities associated with the values of any particular rv $X$.  
+Recall: an rv $X$ is continuous if its set of possible values is uncountable and if $P(X=c)=0 \quad \forall c$.//
+
+\smallskip
+\verb!Probability Density Fxn/Probability Distribution,(pdf)!:
+$\forall a,b \in \mathbb{R}, a \leq b$
+$$P(\forall w \in \mathcal{W}: a \leq X(w)\leq b) = \int_{a}^{b}f(x) dx$$
+Gives the probability that X takes values between a and b. \\
+ The conditions $f(x) \geq 0$ and $\int_{-\infty}^{\infty}f(x)=1$ are required for any pdf.
+
+\smallskip
+\verb!Cumulative Distribution Function(cdf):! 
+
+$$F(x) = P(X \leq x) = \int_{-\infty}^{x} f(y) dy$$
+For any number $x, F(x)$ is the probability that the observed value of X will be at most $x$. \\
+
+By the continuity arguments for continuous RVs we have that\\
+$$P(a \leq X \leq b) = P(a < X \leq b) = P(a < X < b) $$\\
+Other probabilities can be computed from the cdf $F(x)$:
+$$P(X>a) = 1-F(a) $$
+$$ P(a \leq X \leq b) = F(b) - F(a) $$
+
+Furthermore, if $X$ is a cont rv with pdf $f(x)$ and cdf $F(x)$, then at every $x$ at which $F'(x)$ exists, $F'(x) = f(x)$.
+
+\verb!Median!($\tilde \mu$): is the $50$th percentile st $F(\tilde \mu) = .5$.  That is half the area under the density curve.  For a symmetric curve, this is the point of symmetry.\\
+\smallskip
+\verb!Expected/Mean Value!($\mu$ or $E(X)$): of cont rv with pdf $f(x)$
+$$	\mu  = E(X) = \int_{-\infty}^{\infty} x \cdot f(x) dx $$
+ 
+If $X$ is a cont rv with pdf $f(x)$ and $h(X)$ is any function of $X$ then
+$$	E[h(X)] = \mu = \int_{-\infty}^{\infty} h(x) \cdot f(x) dx $$
+
+\verb!Variance:! of a cont rv $X$ with pdf $f(x)$ and mean value $\mu$ is
+$$ \sigma_{x}^2 = V(X) = \int_{-\infty}^{\infty}(x - \mu)^2 \cdot f(x) dx = E[(X - \mu)^2] $$
+Alternatively,
+$$ V(X) = E(X^2) - [E(X)]^2 $$
+
+\subsection{Discrete Distributions}
+\subsubsection{The Binomial Probability Distribution}
+1) The experiment consists of $n$  $trials$ where $n$ is fixed\\
+2) Each trial can result in either success (S) or failure (F)\\
+3) The trials are independent\\
+4) The probability of success $P(S)$ is constant for all trials\\
+
+Note that in general if the sampling is without replacement, the experiment will not yield independent trials. However, if the sample size (number of trials) $n$ is at most $5\%$ of the population, then the experiment can be analyzed as though it were exactly a binomial experiment.
+
+	\verb!Binomial rv X:!  = no of S's among the $n$ trials\\
+	\verb!pmf of a Binomial RV:!, 
+
+   $$b(x; n,p) = {n \choose x} p^x q^{n-x} \quad : x = 0,1,2,\ldots$$
+
+	\verb!cdf for Binomal RV:!  Values in Tble A.1
+	$$ B(x; n, p) = P(X \leq x) = \sum_{y=0}^{x} b(y; n, p) $$
+	\\
+\verb!Mean & Variance of X!
+If $X \sim Bin(n,p)$ then
+	$$	E(X) = np \quad V(X)= npq$$
+
+\subsubsection{Negative Binomial Distribution}
+1) The experiment consists of independent trials\\
+2) Each trial can result in either Success(S) or Failure(F)\\
+3) The probability of success is constant from trial to trial\\
+4) The experiment continues until a total of $r$ successes have been observed, where $r$ is a specified integer.\\
+\verb!RV Y:! = the no of trials before the rth success.\\
+\verb!Negative Binomial rv:!  $X= Y-r$ the number of failures that precede the $rth$ success.  In contrast to the binomial rv, the number of successes is fixed while the number of trials is random.
+
+\verb!pmf of the negative binomial rv !: with parameters $r=$ number of S's and $p = P(S)$ is 
+$$	nb(x; r, p) = {x+r-1 \choose r-1}p^{r}(1-p)^x \qquad x = 0,1,2,\ldots$$
+
+\verb!Mean & Variance of negative binomial rv X:! with pmf $nb(x; r, p)$
+$$ E(X) = \frac{r(1-p)}{p}\quad V(X) = \frac{r(1-p)}{p^2}$$
+
+\subsubsection{Geometric Distribution}
+\verb!RV X:! = the no of trials before the 1st success.\\
+\verb!pmf of the geometric rv !: 
+$$	p(x) = q^{x-1}p$$
+$$ E(X) = \sum xq^{x-1}p = 1/p$$
+
+
+
+
+\subsubsection{The Poisson Probability Distribution}
+Useful for modeling rare events\\
+1) independent: no of events in an interval is independent of no of events in another interval\\
+2) Rare: no 2 events at once\\
+3) Constant Rate: average events/unit time is constant ($\mu>0$)\\
+\verb!RV X=! no of occurrence in unit time interval\\
+\verb!Possion distribution/ Poisson pmf!: of a random variable $X$ with parameter $\mu>0$ where
+$$ p(x; \mu) = \frac{e^{-\mu}\cdot \mu^{x}}{x!} \quad x = 0,1,2,\ldots $$
+
+\verb!Binomial Approximation!:  Suppose that in the binomial pmf $b(x; n, p),$ we let $n \to \infty$ and $p \to 0$ in such a way that $np$ approaches a value $\mu>0$.  Then $b(x; n, p) \to p(x; \mu)$.\\
+That is to say that in any binomial experiment in which n(the number of trials) is large and p(the probability of success) is small, then $b(x; n, p) \approx p(x; \mu)$, where $\mu = np$.\\
+\verb!Mean and Variance of X:! If $X$ has probability distribution with parameter $\mu$, then
+$E(X) = V(X) = \mu$
+
+\subsection{Continuous Distributions}
+\subsubsection{The Normal Distribution, $X \sim N(\mu, \sigma^2)$}
+\verb!PDF:! with parameters $\mu$ and $\sigma$ where $-\infty < \mu < \infty$ and $0<\sigma$ 
+$$  f(x; \mu, \sigma) = \frac{1}{\sqrt{2 \pi\sigma}} e^{-(x-\mu)^{2}/(2 \sigma^2)} \quad -\infty < x<\infty $$
+
+We can then easily show that $E(X) = \mu$ and $V(X) = \sigma^2$.
+
+\verb!Standard Normal Distribution:! The specific case where $\mu =0$ and $\sigma =1$.  Then
+
+$$  \text{pdf}:  \quad \phi(z) = \frac{1}{\sqrt{2 \pi}} e^{-z^{2}/2} \qquad \text{cdf}: \quad  \Phi(z) = \int_{-\infty}^{z} \phi(u) du $$
+
+\verb!Standardization:!  Suppose that $X \sim N(\mu, \sigma^2)$.  Then $$Z = (X-\mu)/\sigma$$ transforms X into standard units.  Indeed $Z \sim N(0,1)$.
+
+{\tiny
+$$ P(a \leq X \leq b) = P\bigg(\frac{a-\mu}{\sigma} \leq Z \leq \frac{b-\mu}{\sigma}\bigg) = \Phi \bigg(\frac{b-\mu}{\sigma} \bigg) - \Phi \bigg(\frac{a-\mu}{\sigma} \bigg) $$}
+
+\verb!Independence:!  If $X\sim N(\mu_{x},\sigma_{x}^2)$, $Y\sim N(\mu_{y},\sigma_{y}^2)$ and $X$ and $Y$ are independent, then $X \pm Y \sim N(\mu_{x} \pm \mu_{y},\sigma_{x}^2 + \sigma_{y}^2)$
+
+NOTE: By symmetry of the standard normal distribution, it follows that $\Phi(-z) = 1 - \Phi(z) \quad \forall z \in \mathbb{R}$
+
+\verb!Normal Approx to Binomial Dist:!  Let $X\sim Bin(n,p)$. As long as a binomial histogram is not too skewed, Binomial probabilities can be well approximated by normal curve areas.  
+$$  P(X \leq x) = B(x; n, p) \approx \Phi \bigg( \frac{x + 0.5 -np}{\sqrt{np(1-p)}} \bigg) $$
+As a rule, the approx is adequate provided that both $np\geq 10$ and $n(1-p) \geq 10$.
+
+
+\subsubsection{The Exponential Distribution, $X \sim Exp(\lambda)$}
+Model for lifetime of firms/products/humans
+\verb!Exponential Distribution:!  A cont rv $X$ has exp distribution if its pdf is given by
+$$ f(x; \lambda) = \lambda e^{-\lambda x}, \quad x\geq 0 \quad \lambda >0$$ 
+
+
+\begin{tabular}{@{}ll@{}}
+$F(x, \lambda)$=&	 $P(X \leq x) = 1- e^{\lambda x} \quad x \geq 0$\\
+$E(X)$=&	$1/ \lambda$\\
+$V(X)$=&$1/ \lambda^2$	\\
+\verb!Memoryless Prop!:& $P(X> a+x | X>a) = P(X>x)$ 	\\
+& for $x \in D, a>0$\\
+\end{tabular}
+
+Note: If $Y$ is an rv distributed as a Poisson $p(y; \lambda)$, then the time between consecutive Poisson events is distributed as an exponential rv with parameter $\lambda$
+
+\subsection{Joint Probability Dist}
+
+\verb!Joint Range:! Let $X:\mathcal{S} \to \mathbb{D}_1$ and $Y:\mathcal{S} \to \mathbb{D}_2$ be 2 rvs with a common sample space. We define the joint range of the vector $(X,Y)$ of the form
+$$  \mathbb{D} = \mathbb{D}_1 \times \mathbb{D}_2 = \{ (x,y): x \in \mathbb{D}_1, y \in \mathbb{D}_2\} $$
+
+\verb!Random Vector:! A 2-D random vector$(X,Y)$ is a function from $\mathcal{S} \to \mathbb{R}^2$.  It is defined $\forall \omega \in \mathcal{S}$ such that $$ (X,Y)(\omega) = (X(\omega), Y(\omega)) = (x,y) \in \mathbb{D}$$
+
+\verb!Joint Probability Mass Fxn:! For two discrete rv's $X$ and $Y$.  The joint pmf of $(X,Y)$ is defined $\forall (x,y) \in \mathbb{D}$
+$$  p(x_{i}, y_{j}) = P(X = x_{i}, Y = y_{j}) $$
+It must be that $p(x,y) \geq 0$ and $\sum_i \sum_j p(x_{i}, y_{j}) = 1$.
+
+\verb!Marginal Prob Mass Fxn:!  of $X$ and of $Y$, denoted $p_{X}(x)$ and $p_{Y}(y)$ respectively,
+$$  p_{X}(x) = \sum_{y: p(x,y) >0} p(x,y) \quad \forall x \in \mathbb{D}_1$$
+
+\verb!Joint Probability Density Fxn:! For two continuous rv's $X$ and $Y$.  The joint pdf of $(X,Y)$ is defined $\forall A \subseteq \mathbb{R}^2$
+$$  P((X,Y)\in A) = \iint_{A} f(x,y)dx dy $$
+It must be that $f(x,y) \geq 0$ and $\int_{-\infty}^{\infty} \int_{-\infty}^{\infty} f(x, y) dx dy= 1$. Note also that this integration is commutative.
+
+\verb!Marginal Prob Density Fxn:!  of $X$ and of $Y$, denoted $f_{X}(x)$ and $f_{Y}(y)$ respectively,
+$$  f_{X}(x) = \int_{-\infty}^{\infty} f(x,y) dy \quad \forall x \in \mathbb{D}_1$$
+
+Note that if $f(x,y)$ is the joint density of the random vector $(X,Y)$ and $A \in \mathbb{R}^2$ is of the form $A= [a,b]\times[c,d]$ we have that
+$$  P((X,Y)\in A) = \int_{c}^{d} \int_{a}^{b} f(x, y) dx dy = \int_{a}^{b} \int_{c}^{d} f(x, y) dx dy $$
+
+\verb!Independence:!  Two rvs are independent if 
+$$ P(X=x, Y=y) = P(X=x) P(Y=y) \quad  f(x,y) = f_{X}(x) f_{Y}(y)$$
+
+
+\verb!Conditional Distribution(discrete): !  For two discrete rv's $X$ and $Y$ with joint pmf $p(x_{i}, y_{j})$ and marginal $X$ pmf $  p_{X}(x)$, then for any realized value $x$ in the range of $X$, the conditional mass function of $Y$, given that $X=x$ is 
+$$  p_{Y|X}(y|x) = \frac{p(x_{i}, y_{j})}{p_{X}(x)} $$
+
+
+\verb!Conditional Distribution(cont):! For two continuous rv's $X$ and $Y$ with joint pdf $f(x,y)$ and marginal $X$ pdf $  f_{X}(x)$, then for any realized value $x$ in the range of $X$, the conditional density function of $Y$, given that $X=x$ is 
+$$  f_{Y|X}(y|x) = \frac{f(x, y)}{f_{X}(x)} $$
+%
+\subsection{Expected Values, Covariance \& Correlation}
+
+
+\verb!Expected value!: 
+The expected value of a function $h(X, Y)$ of two jointly distributed random variables is  
+$$	E(g(X,Y)) = \sum_{x\in \mathbb{D}_1} \sum_{y\in \mathbb{D}_2} g(x,y)p(x,y)	$$
+and can be generalized to the continuous case with integrations.//
+
+\verb!Covariance:! Measures the strength of the relation btwn 2 RVs, however very 
+$$ Cov(X,Y) = E[(X-E(X))(Y - E(Y))] = E(XY) - E(X)E(Y) $$
+Shortcut Formula:
+$$	Cov(X,Y) = E(XY)  -  \mu_{x} \mu_{y}$$
+
+The defect of the covariance however is that its value depends critically on the units of measurement.
+
+\verb!Correlation:! Cov after standardization. Helps interpret Cov. 
+$$ \rho =  \rho_{X,Y} = Corr(X,Y) = \frac{Cov(X,Y)}{\sqrt{V(X)V(Y)}} = \frac{Cov(X,Y)}{SD(X) SD(Y)} $$
+Has the property that $Corr(aX+b, cY+d) = Corr(X,Y)$\\
+and that for any rvs X, Y $-1 \leq \rho \leq 1$.\\
+
+Note also that $\rho$  is independent of units, the larger $|\rho|$ the stronger the linear association, considered strong linear relationship if $|\rho| \geq 0.8$.\\
+
+Caution though: if X and Y are independent then $\rho = 0$ but $\rho =0$ does not imply that X,Y are independent.\\
+Also that $\rho = 1$ or $-1$ iff $Y = aX+b$ for some $a,b$ with $a\neq0$.\\
+
+\verb!Statistic:! Any quantity whose value can be calculated with sample data. Prior to obtaining data, there is uncertainty as to what value of any particular statistic will result. Therefore, a statistic is a random variable and will be denoted by an uppercase letter; a lowercase letter is used to represent the calculated or observed value of the statistic.\\
+\verb!Sampling Distribution:! probability distribution of a statistic, it describes how the statis- tic varies in value across all samples that might be selected\\
+
+
+
+
+
+\subsection{Stats \& Their Distributions}
+ \subsubsection{Fxns of Observed Sample Observ}
+ 
+ \begin{tabular}{@{}ll@{}}
+ 
+ \verb!Obs Sample Mean! & $\bar{x} = \frac{1}{n}\sum x_i$ \\
+ \verb!Obs Sample Var! & $s^2 = \frac{1}{n-1} \sum (x_i - \bar{x})^2$\\
+ \verb!Obs Sample Max! & $x_{(n)} = max (x_i)$\\
+ \end{tabular}
+ 
+ A statistic is a random variable and the most common are listed above.
+ 
+\verb!Simple Random Samples:! The random variables $X_1 , \ldots, X_n$ are said to form a simple random sample of size n if each $X_i$ is an independent random variable, every $X_i$ has the same probability distribution.
+ 
+ \verb!Sampling Distribs:!  Every statistic has a probability distribution (a pmt or pdf) which we call its sampling distribution. To determine its distrib can be hard but we use simulations and the CLT to do so.
+ 
+ \verb!Simulation Experiments:!  we must specify the statistic of interest, the population distribution, the sample size(n)  and the number of samples (k).  Use a computer to simulate each different simple random sample, construct a histogram which will give approx sampling distribution of the statistic.
+
+
+\subsection{The Dist \% Sample Mean}
+Prop: Let $X_1 , \ldots, X_n$ be a simple random sample from a distribution with mean $\mu$ and variance $\sigma^2$.  Then $E(\bar{X}) = \mu_{\bar{X}} = \mu$ and $V(\bar{X}) = \sigma^{2}_{\bar{X}} = {\sigma^{2}}/n$.  Also if $S_{n} = X_1 + \ldots +X_n$ then $E(S_n) = n \mu$ and $V(S_n) = n \sigma^2 $.
+
+Prop: Let $X_1 , \ldots, X_n$ be a simple random sample from a normal distribution with mean $\mu$ and variance $\sigma^2$.  Then for any n, $\bar{X}$ is normal distributed with mean $\mu$ and variance ${\sigma^2}/n$. Also $S_n$ is normal distributed with mean $n \mu$ and variance $n{\sigma^2}$.
+
+Prop: Let $X_1 , \ldots, X_n$ be a simple random sample from Bernoulli(p), then $S_{n} \sim $ Binomial(n,p).
+
+
+
+\subsubsection{Distribution of The Sample Mean $\bar{X}$}
+Let $X_1 , \ldots, X_n$ be a simple random sample from a distribution with mean $\mu$ and variance $\sigma^2$.
+Then $E(\bar{X}) = \mu_{\bar{X}} = \mu$ and $V(\bar{X}) = \sigma_{\bar{X}}^2 = \sigma^2 /n$\\
+
+The standard deviation $\sigma_{\bar{X}} = \sigma/\sqrt{n}$ is often called the \emph{standard error of the mean}.\\
+
+For a NORMAL random sample with the same mean and std as above, then for any $n$, $\bar{X}$ is normally distributed with the same mean and std.\\
+
+\verb!Central Limit Theorem:!  Let $X_1 , \ldots, X_n$ be a simple random sample from a distribution with mean $\mu$ and variance $\sigma^2$.  Then if n is sufficiently large, $\bar{X}$ has approximately a normal dis with mean $\mu$ and variance ${\sigma^2}/n$.  Also $S_n$ is normal distributed with mean $n \mu$ and variance $n{\sigma^2}$.  No matter which population we sample from, the probability histogram of the sample mean follow closely a normal curve when n is sufficiently large.  \emph{Rule of thumb: if $n \geq 30$ CLT can be used.}\\
+It follows from CLT that is $X \sim Bin(n,p)$ and n is large, then n can be distributed by a $N(np, npq)$.
+\subsubsection{Dist of a Linear Combination}
+%
+%
+\verb!Linear Comb:! Let $X_1 , \ldots, X_n$ be a collxn of n random variables and let $a_1 \ldots a_n$ be n numerical constants.  Then the random variable $Y= a_1 X_1 + \ldots a_n X_n$ is a linear comb of the $X_i 's$.
+
+\begin{enumerate}
+	\item Regardless of whether the $X_i 's$ are independent or not
+	$$ E(Y) = a_1 E(X_1) + \ldots + a_n E(X_n) = a_1 \mu_1 + \ldots + a_n \mu_n$$
+	\item If $X_1 , \ldots, X_n$ are independent
+	$$ V(Y) = V(a_1 X_1 + \ldots a_n X_n) + a_{1}^{2} \sigma_{1}^{2} + \ldots $$
+	\item For any $X_1 , \ldots, X_n$,
+		$$ V(Y) = \sum_{i=1} \sum_{j=1} a_{i} a_{j} Cov (X_i , X_j) $$
+		
+	\item If $X_1 , \ldots, X_n$ are independent, normally distributed rvs, then any linear combination of the rvs also has a normal distribution- as does their difference.  
+\end{enumerate}
+
+$E(X_1 - X_2) = E(X_1) - E(X_2), \forall X,Y$ while $V( X_1 - X_2) = V( X_1) + V( X_2)$ if X1, X2 independent,
+
+
+\section{2. Estimators}
+\verb!Parameter of Interest! $(\theta)$ true yet unknown pop parameter\\
+\verb!Point Estimate:! ($\hat{\theta}$) Our guess for $\theta$ based on sample data\\
+\verb!Point Estimator:! ($\hat{\theta}$) statistic selected to get a sensible pt est\\
+
+A sensible way to quantity the idea of $\hat{\theta}$ being close to $\theta$ is to consider the least squared error $(\hat{\theta} - \theta)^2$.  A good measure of the accuracy is the expected or mean square error MSE = $E [(\hat{\theta}-\theta)^{2}]$.  It is often not possible to find the estimator with the smallest MSE so we often restrict our attention to \emph{unbiased} estimators and find the best estimator of this group.\\
+\verb!Unbiased: ! Pt Est $\hat{\theta}$ if $E(\hat{\theta}) = \theta$ for all $\theta$.\\
+Then $\hat{\theta}$ has a prob distribution that is always "centered" at the true $\theta$ value.\\
+\emph{When choosing estimators, select the unbiased and the one that has the minimum variance. }
+
+\subsubsection{Estimators}
+-When $X \sim Bin(n,p)$, the sample proportion $\hat{p} = X/n $ is an unbiased est of p.\\
+- Let $X_1 , \ldots, X_n$ be a SRS from a distribution with mean $\mu$ and variance $\sigma^2$.Then $\hat{\sigma}^2 = S^2 = \frac{\sum (X_{i} - \bar{X})^2 }{n-1}$ is unbiased for $\sigma^2$.\\
+-Let $X_1 , \ldots, X_n$ be a SRS from a distribution with mean $\mu$, then $\bar{X}$ is MVUE for $\mu$.\\
+
+\verb!Standard Error:! of an estimator is its standard deviation $\sigma_{\hat{\theta}} - \sqrt{V(\hat{\theta})}$\\
+\verb!Estimated Standard Error:! If the standard error itself involves unknown parameters whose values can be estimated, substitution of these estimates into $\sigma_{\hat{\theta}}$ yields $\hat{\sigma_{\hat{\theta}}} = s_{\hat{\theta}}$.\\
+
+\subsubsection{Method of Moments}
+Let $X_1 , \ldots, X_n$ be a SRS from a pdf $f(x)$.  For $k=1,2,\ldots$ the kth population moment, or kth moment of the distribution
+$f(x)$, is $E(X^{k})$.  The kth sample moment is $(1/n) \sum^{n}_{i=1} X^{k}_{i}$.\\
+Let $X_1 , \ldots, X_n$ be a SRS from a distribution with pdf $f(x; \theta_{1} \ldots \theta_{m})$ where $\theta_i$'s are unknown.  Then the moment estimators $\hat{\theta_i}$'s are obtained from the first m sample moments to the corresponding first m population moments and solving for the $\theta_i$'s.
+
+\subsubsection{Maximum Likelihood Estimator}
+Works best when the sample size is large!\\
+Let $X_1 , \ldots, X_n$ have joint pmf or pdf 
+\[ f(x_{1}, \ldots, x_{n} ; \theta_{1} \ldots \theta_{m})\]
+where the $\theta_{i}$'s have unknown values.\\
+When $x_1 , \ldots, x_n$ are observed sample values, the above is considered a fxn of the $\theta_{i}$'s and is called the \textbf{likelihood function}. \\
+The maximum likelihood estimates (mle’s) $\hat{\theta_{i}}$'s are those $\theta_{i}$'s that maximize the likelihood function such that 
+\[ f(x_{1}, \ldots, x_{n} ; \hat{\theta_{1}} \ldots \hat{\theta_{m}}) \geq  f(x_{1}, \ldots, x_{n} ; \theta_{1} \ldots \theta_{m}) \quad \forall \theta_{1} \ldots \theta_{m} \]
+When $X_1 , \ldots, X_n$ substituted in, the \textbf{maximum likelihood estimators} result.
+
+
+\section{3. Confidence Intervals}
+	\subsection{Tests in a single sample}
+		\subsubsection{When measuring $n$ random variables $Y_{i}  \sim i.i.d.$}
+			\textbf{Hypotheses about the population mean $E[Y_i]$}\\
+				\verb!Z-test!  (when $n>40$ or if normality with known variances could be assumed)
+				$$	Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} $$
+				\verb!CI for Normal Population:! A $100(1-\alpha)\%$ CI for the mean $\mu$ of a population when $\sigma$ is known is 
+$$\bigg(\bar{x} - z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}},	\bar{x} + z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \bigg)	$$
+				\verb!T -test! (normality must be assured; for large n this is the same as the z-test). When $\bar{X}$ is the sample mean of a SRS of size n from a Normal($\mu, \sigma^2$) population then the RV
+$$T = \frac{\bar{X}-\mu}{S/{\sqrt{n}}}$$
+has a probability distribution-t with n-1 degrees of freedom.
+Note: the density of $t_{\nu}$ is symmetric around 0.  $t_{\nu}$ is more spread out than a normal, indeed the few dof the more spread.  When dof is large ($<40$), the t and normal curve are close.
+In addition we have that
+$$  P ( \big| \frac{\bar{X}-\mu}{S/\sqrt{n}} \big| \leq t_{\alpha/2, n-1}) = 1- \alpha $$
+As a result, the $(1-\alpha)100\%$ CI for the population mean $\mu$ under the normal model is
+$$	\bar{X} \pm t_{\alpha/2, n-1} \frac{S}{\sqrt{n}} $$
+
+Note that here we make the assumption that the observations are realizations of a SRS from a Normal distribution with unknown mean and variance.//
+				\verb!Large Sample Test! for the population proportion (proportions are just means; only valid for $np_{0} \geq 10$ and $n(1-p_{0})\geq 10$. The $(1-\alpha)$ confidence interval for a population mean $\mu$ is   $$\bar{X} \pm z_{\alpha/2} \frac{S}{\sqrt{n}}$$
+For a population proportion
+	$$ \hat{p} \pm z_{\alpha/2} \sqrt{\hat{p}(1-\hat{p})/n} \qquad \hat{p} = \bar{X}$$
+		\textbf{Hypotheses about the population variance $V[X_i]$}\\	
+		The $(1-\alpha)100\%$ CI for the variance $\sigma^2$ of a normal population has a lower limit:  $$  (n-1) s^{2}/ \chi^{2}_{\alpha/2, n-1} $$ 
+		and Upper limit: $$  (n-1) s^{2}/ \chi^{2}_{1-\alpha/2, n-1} $$
+		A confidence interval for $\sigma$ has lower and upper limits that are the square roots of the corresponding limits in the interval for $\sigma^2$. An upper or a lower confidence bound results from replacing $\alpha/2$ with $\alpha$ in the corresponding limit of the CI.
+		
+		
+		
+		\subsubsection{When measuring two variables for each unit $(X_{i},Y_{i} ) \sim i.i.d.$}
+		\verb!Paired t-test! about the difference of population means: 
+		
+		\verb!Test about parameters! $\beta_1$ and $\beta_0$
+	\subsection{Tests in two non-paired, independent samples }
+\section{4. Hypothesis Testing}
+In it hard to example the evidence of such a strong count as a lucky draw.  The p-value or observed significance level determines whether or not a hypothesis will be rejected- the smaller it is, the stronger evidence against he null hypothesis.\\
+The plausibility of statistical models determined by the null hypothesis is based on the sample data and their distributions.  The idea is that the null is not rejected unless it is testified implausible overwhelmingly by data.  
+
+\verb!Possible Errors:!  Type I: reject the null hypothesis when it is true;  Type II: fail to reject the null even though it is false.
+
+\subsection{Power Function}
+For a given test with critical or rejection region $\{x: T(x) \geq c\}$, the power function is defined as
+\[\phi (\theta) = P(T(X_{1}, \ldots, X_{n})\geq c | \theta) = P(T \geq c | \theta) \]
+In other words, $\phi (\theta)$ represents the \emph{probability of rejection $H_{0}$} if a particular $\theta$ were the true value of parameter of the pmt or pdf $f(x; \theta)$.\\
+
+In other words,  if $H_{0}$ is true, $\phi (\theta)$ = Probability of type 1 error.  If $H_{0}$ is false, $\phi (\theta)$ = 1- Probability of type 2 error.
+
+
+A court trial, where the null hypothesis is "not guilty" unless there is convincing evidence
+against it. The aim or purpose of court hearings (collecting data) is to establish the assertion of
+"guilty" rather than to prove "innocence."
+
+P-value (or observed signicance level) is the probability, calculated assuming that H0 is true, of
+obtaining a value of the test statistic at least as contradictory to H0 as the value calculated from the
+available sample. It is also the smallest significance level at which one can reject H0.
+
+In other words, suppose we have observed a realization $x_{obs} = (x1,\ldots, xn)$ of our random sample
+$X_1 , \cdots , X_n  \sim f(x, \theta)$. We wish to investigate the compatibility of the null hypothesis,
+with the observed data. We do so by comparing the probability distribution of the test statistic $T(X1,\cdots, Xn)$ with its observed value $t_{obs} = T(x_{obs})$, assuming H0 to be true. As a measure of compatibility, we calculate
+$$p(xobs) = \text{p-value} = P(T(X1,\ldots, X_n) \geq t_{obs}|H0)$$
+In general, report the p-value.  When it is less than 5\% or 1 \%, the result is statistically significant.
+
+\subsection{Hypotheses and Test Procedures}
+
+\textbf{Statistical hypothesis(hypothesis)} is a claim or assertion about the value of a single parameter, about the values of several parameters, or about the form of an entire population distribution.
+
+In any hypothesis-testing problem, there are two contradictory hypotheses under consideration.  
+
+The \textbf{null hypothesis}, denoted $H_0$ is the claim that is initially assumed to be true (the "prior belief" claim). Often called the hypothesis of no change (from current opinion) and will generally be stated as an equality claim, equal to the \emph{null value}. The \textbf{alternative hypothesis} or researcher's hypothesis, denoted by $H_a$ is the assertion that is contradictory to $H_0$.  The alt hypothesis is often the claim that the researcher would really like to validate.
+
+
+\emph{The null hypothesis will be rejected in favor of the alternative hypothesis only if sample evidence suggests that $H_0$ is false. If the sample does not strongly contradict $H_0$, we will continue to believe in the plausibility of the null hypothesis. The two possible conclusions from a hypothesis-testing analysis are then reject $H_0$ or fail to reject $H_0$.}
+
+A \textbf{test of hypotheses} is a method for using sample data to decide whether the null hypothesis should be rejected. 
+
+A \textbf{test procedure} is a rule based on sample data, for deciding whether to reject $H_0$.  A procedure has 2 consitutents: 1) a test static, or function of the sample data used to make a decision and 2) a rejection region consisting of those x values for which $H_0$ will be rejected in favor of $H_a$.  
+
+A test procedure is specified by the following:
+\begin{enumerate}
+ \item A \textbf{test statistic}, a function of the sample data on which the decision (reject $H_0$ or do not reject $H_0$) is to be based
+\item A \textbf{rejection region}, the set of all test statistic values for which $H_0$ will be rejected.  The basis for choosing a rejection region lies in consideration of the errors that one might be faced with in drawing a conclusion. 
+\end{enumerate}
+
+The null hypothesis will then be rejected if and only if the observed or computed test statistic value falls in the rejection region.
+
+A \textbf{type I error} consists of rejecting the null hypothesis $H_0$ when it is true- a false negative. A \textbf{type II error} involves not rejecting $H_0$ when $H_0$ is false- a false positive.
+
+
+In the best of all possible worlds, test procedures for which neither type of error is possible could be developed. However, this ideal can be achieved only by basing a decision on an examination of the entire population. The difficulty with using a procedure based on sample data is that because of sampling variability, an unrepresentative sample may result, e.g., a value of $\bar{X}$ that is far from $\mu$ or a value of $\hat{p}$ that differs considerably from $p$. 
+
+
+Suppose an experiment and a sample size are fixed and a test statistic is chosen. Then decreasing the size of the rejection region to obtain a smaller value of $\alpha$ results in a larger value of $\beta$ for any particular parameter value consistent with $H_a$.  In other words, once the test statistic and $n$ are fixed, there is no rejection region that will simultaneously make both $\alpha$ and all $\beta$'s small.  A region must be chosen to effect a compromise between $\alpha$ and $\beta$.
+
+\subsubsection{Tests About a Population Mean}
+
+$$ \sigma_{\bar{X}} = \frac{\sigma}{\sqrt{n}} $$
+
+$\alpha$ = P($H_0$ is rejected when $H_0$ is true) = false negative = $P(\bar{X} \leq 70.8$ when $\bar{X} \sim $ normal with $\mu_{\bar{X}} = 75, \sigma_{\bar{X}} = 1.8$) = $P(Z\geq c$ null when $Z\sim N(0,1))$
+
+
+$\beta$ = P($H_0$ is accepted when $H_0$ is false) = false positive = $P(\bar{X} > 70.8 $ when $\bar{X} \sim $ normal with $\mu_{\bar{X}} = 72, \sigma_{\bar{X}} = 1.8$) 
+
+\subsection{Tests about a Population Mean}
+
+\subsubsection{Case1: A Normal Population with a Known $\sigma$}
+Assuming that the sample mean $\bar{X}$ has a normal distribution with $\mu_{\bar{X}} = \mu$ and standard deviation $\sigma_{\bar{X}} = \sigma/ \sqrt{n}$.  When $H_0$ is true, $\mu_{\bar{X}} = \mu_0$. Consider now the statistic Z obtained by standardizing $\bar{X}$ under the assumption that $H_0$ is true:
+$$	Z = \frac{\bar{X} - \mu_{0}}{\sigma/\sqrt{n}} $$
+
+\section{5. Simple Linear Regression and Correlation}
+
+Common theme: to study the relationships among variables.
+
+\subsection{Model and Summary Statistics}
+\verb!Bivariate Data:! $(x_1, y_1) , (x_2 , y_2) \cdots (x_n , y_n)$\\
+\verb!Generic Pair!  $(X, Y)$  X- predictor, independent variable, covariate\\
+\verb!Simple Linear Regression:!   $ Y = \beta_0  + \beta_1 x + \varepsilon$ \\
+\verb!Betas! regression coeffs, $\varepsilon$ measurement error, cannot be explained by $x$\\
+The ith observation is given by $y_i  = \beta_0 + \beta_1 x_i + \varepsilon_i$
+and we further assume that $\varepsilon_i$ are iid $N(0, \sigma^2)$
+
+\verb!Conditional Expected Value:!  For the linear model we have that
+$E(Y|x) = E(\beta_0 + \beta_1 x + \varepsilon_0) = \beta_0 + \beta_1 x $
+which is the average for the group with covariate $\sim x$
+
+\verb!Conditional Standard Deviation:! Similarly we have that $V(Y|x) = \sigma^2$
+which is the variance for the group with covariate $\sim x$
+
+\verb!Summary Stats x:!  $\bar{x}$ and $SD_{x} = \sqrt{\frac{S_{xx}}{n-1}}$ or $S_{xx} = \sum (x_{i}- \bar{x})^{2}$
+\verb!Sum Stats y:!  $\bar{y}$ and $SD_{y} = \sqrt{\frac{S_{yy}}{n-1}}$ or $S_{yy} = \sum (y_{i}- \bar{y})^{2}$
+\verb!Strength of Linear Assoc:!  $r = \frac{S_{xy}}{\sqrt{S_{xx}S_{yy}}}$ the sample correlation coeff.
+$$  S_{xy} = \sum (x_{i}- \bar{x})(y_{i}- \bar{y}) = \sum x_{i}y_{i} - n \bar{x}\bar{y} $$
+
+\verb!Purpose of the Regression:!  To quantify the contribution of the predictors $X_1 \ldots X_p$ on the outcome of Y, given $(x_1 , \ldots, x_p)$ predict the mean response,  quantify the uncertainty in this prediction (with standard error/confidence interval), extrapolate
+
+\subsection{Estimation of Model Parameters}
+Data are modeled as
+$$ y_{i} = \beta_{0} + \beta_{1}x_{i} + \varepsilon_{i}, \quad i = 1 \ldots n \quad \varepsilon_{i} \sim N(0, \sigma^2)$$
+
+How to find good estimates for $\beta_0$ \& $\beta_1$?
+
+- The error between $y_i$ and $\beta_0 + \beta_1 x$ is $\varepsilon_i$ and we want to minimize the total "loss"
+
+-In the case of squared-error loss functions, the total loss is $ \sum \varepsilon_{i}^{2} $
+
+-To minimize, take partial derivatives of SSE wrt each $\beta$ and set each to zero. Then solve the system of linear equations for each $\beta$. In this case
+$$  \hat{\beta_1} = \frac{\sum x_i y_i - n \bar{x}\bar{y}}{\sum x_{i}^2  - n \bar{x}^2} = \frac{S_{xy}}{S_{xx}} = r \frac{SD_x}{SD_y} $$
+$$ \hat{\beta_0} = \bar{y} - \hat{\beta_1}\bar{x} $$
+
+\verb!Fitted Values:!  $\hat{y_i} = \hat{\beta_0} + \hat{\beta_1} x_{i}$ The value $y_i$ predicted based on $x_i$\\
+\verb!Residuals:! $\hat{\varepsilon_i} = y_i - \hat{y_i}$  Difference between predicted and actual y\\
+\verb!Residal Sum of Squares:!  SSE = SSE $(\hat{\beta_0}, \hat{\beta_1}) = \sum \hat{\varepsilon_i}^2$ \\
+\verb!Regression Line:!$\hat{y} = \hat{\beta_0} + \hat{\beta_1} x$ Used to predict the mean response $\hat{y}$ for a given x\\
+
+
+
+\subsection{Estimating $\sigma^2$}
+$$\sigma^2  = \frac{1}{n-2} \sum\hat{\varepsilon}^2 = SSE/2 $$
+
+It can be shown that $SSE= S_{yy} - \frac{S_{xy}^2}{S_{xx}} = S_{yy}(1-r^2)$ and hence
+$$ \hat{\sigma} = \sqrt{\frac{SSE}{n-2}} = \sqrt{\frac{n-1}{n-2}}SD_{y} \sqrt{1-r^2} $$
+which is smaller that $SD_y$- the regression has decreased uncertainty about y.
+
+\subsection{Goodness of fit}
+\verb!Sum of squares due to regression (SSR)! 
+$$	SS_{reg} = S_{yy} - SSE	$$
+
+\verb!Coeff of Determination! $R^2$:  Percentage of variability of Y explained by the regression on X.  The larger it is, the better the fit.
+$$   R^{2} = \frac{S_{xy}^2}{S_{xx}S_{yy}} = r^2 $$
+
+\subsection{Inference for Model Parameters}
+$$ \hat{\beta_1}= \frac{S_{xy}}{S_{xx}} \quad \hat{\beta_0} = \bar{y} -\hat{\beta_1} x $$
+
+$$SE(hat) (\hat{\beta_1}) = \hat{\sigma}/\sqrt{S_{xx}} \quad SE(hat) (\hat{\beta_0}) = \hat{\sigma}\sqrt{ \frac{1}{n} + \frac{\bar{x}^2}{S_{xx}}} $$ where the T-statistic is:
+\[	T = \frac{\hat{\beta_1} - \beta_{1}}{\hat{SE}(\hat{\beta_1})}\]
+
+\verb!Standard Errors:! SInce the estimators are linear in Y
+
+\verb!Confidence Intervals:! $\hat{\beta_0} \pm t_{\alpha/2 , n-2}$
+
+\section{6. Goodness of Fit}
+Condition: for each cell, the expected count is greater than five\\
+ Multinomial dist:  probability weights on discrete, unordered possible outcomes\\
+ 
+ \verb!Homogeneity:! Along the rows we have diff populations and columns are difference categories.\\
+ H0: proportion of individuals in category j is the same for each population and that is true for every category.  $p_{1j} = \ldots = p_{Ij}$ for $j=1\ldots J$\\
+ Estimated expected: $\hat{e_{ij}} = \frac{(\text{ith row total})(\text{jth column total})}{n}$
+ Test Statistic:
+ \[\chi^2 =\sum \frac{(ob-est ex)^2}{est ex} = \sum \sum \frac{(n_{ij} -\hat{e_{ij}})^2 }{\hat{e_{ij}}}\]  
+ Rejection Region:  $\chi^2  \geq \chi^{2}_{\alpha(I-1)(J-1)}$\\
+ \verb!Independence:! Only one population but looking at the relationship btwn 2  different factors.  Each individual in one category associated with first factor and one category associated with second factor. \\
+ H0: The null hypothesis here says that an individual’s category with respect to factor 1 is independent of the category with respect to factor 2. In symbols, this becomes $p_{ij} =p_{i} p_{j} \forall (i, j)$.\\
+ Test Statistic, RR and Condition: Same as above
+ 
+ State the uncertainty in a particular estimate of ours.
+
+\subsubsection{Basics}
+The actual sample observations $x1, \ldots, xn$ are assumed to be the result of a random sample $X1, \ldots, Xn$ from a normal distribution with mean value $\mu$ and standard deviation $\sigma$.  We know then(from Ch5) that $\bar{X} \sim N(\mu, {\sigma^2}/n)$.  Standardizing yields
+$$   Z = \frac{\bar{X} - \mu}{\sigma/\sqrt{n}} $$
+Obtain an inequality such as 
+$$ P(-1.96 \leq\frac{\bar{X} - \mu}{\sigma/\sqrt{n}} \leq 1.96 ) = 0.95 $$ and we manipulate the inequality so that it apprears in the form  $l \leq \mu \leq u$ where l,u involve factors save $\mu$.\\
+
+This interval we now describe is random since the endpoints involve a random variable and centered at $\bar{X}$.  It says the probability is .95 that the random interval includes or covers the true value of $\mu$. The confidence level 95\% is not so much a statement about any particular interval, instead it pertains to what would happen if a very large number of like intervals were to be constructed using the same CI formula. \\
+\verb!CI for Normal Population:! A $100(1-\alpha)\%$ CI for the mean $\mu$ of a population when $\sigma$ is known is 
+$$\bigg(\bar{x} - z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}},	\bar{x} + z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}} \bigg)	$$	
+or equivalently,
+$$	\bar{x} \pm z_{\alpha/2} \sigma/\sqrt{n} $$
+
+
+\verb!Necc Sample Size:!  for a CI to have width $w$ is $n = (2 z_{\alpha/2} \cdot \frac{\sigma}{w})^{2} $\\
+
+Note that for sufficiently  large n, $\sigma$ is replaced by S, the sample variance.
+
+\verb!General Large-Sample CI!: Suppose that $\hat{\theta}$ is an estimator approx normal, unbiased, and has an expression for $\sigma_{\hat{\theta}}$.  Then standardizing yields
+$$ P(-z_{\alpha/2} <\frac{\hat{\theta} - \theta}{\sigma_{\hat{\theta}}}< z_{\alpha/2} ) \approx 1-\alpha $$
+
+
+
+\subsection{Population Mean (if variance unknown)}
+
+With 95\% chance the random interval covers $\mu$, population mean.
+
+\verb!Interpretation:!  When the estimator is replaced by an estimate, the random interval becomes a realized interval. The word confidence refers to the procedure.  If we repeat the experiment many times and construct 95\% confidence intervals int he same manner, about 95\% of them cover the unknown, but fixed, $\mu$. We don't know whether the current interval covers $\mu$ or not but we know that of all the intervals ever constructed 95\% will cover.
+
+\subsection{General Confidence Intervals}
+When the sample size is large $(>40)$, the $(1-\alpha)$ confidence interval for a population mean $\mu$ is   $$\bar{X} \pm z_{\alpha/2} \frac{S}{\sqrt{n}}$$
+For a population proportion
+	$$ \hat{p} \pm z_{\alpha/2} \sqrt{\hat{p}(1-\hat{p})/n} \qquad \hat{p} = \bar{X}$$
+
+\subsection{Steps for calculating Confidence Intervals}
+1) Find an RV having an (approximately) known distribution\\
+2) Cut off tails, that is, select a confidence level $(1-\alpha)$\\
+3) Solve the equation to obtain confidence intervals- isolate the population mean in an approbate string of inequalities.\\
+
+\subsection{Intervals Based on a Normal Population}
+When the sample size is small, we can no longer use the CLT. But maybe we can assume that the data comes from a normal population.  In that case we need to account for the uncertainty in estimating $\sigma$ but by how much?\\
+
+\verb!T-Statistic: !  When $\bar{X}$ is the sample mean of a SRS of size n from a Normal($\mu, \sigma^2$) population then the RV
+$$T = \frac{\bar{X}-\mu}{S/{\sqrt{n}}}$$
+has a probability distribution-t with n-1 degrees of freedom.
+Note: the density of $t_{\nu}$ is symmetric around 0.  $t_{\nu}$ is more spread out than a normal, indeed the few dof the more spread.  When dof is large ($<40$), the t and normal curve are close.
+In addition we have that
+$$  P ( \big| \frac{\bar{X}-\mu}{S/\sqrt{n}} \big| \leq t_{\alpha/2, n-1}) = 1- \alpha $$
+As a result, the $(1-\alpha)\%$ CI for the population mean $\mu$ under the normal model is
+$$	\bar{X} \pm t_{\alpha/2, n-1} \frac{S}{\sqrt{n}} $$
+
+Note that here we make the assumption that the observations are realizations of a SRS from a Normal distribution with unknown mean and variance.
+
+\subsection{One-Sided Confidence Bounds}
+\verb!Lower Confidence Bound:! When $n$ is large, then
+$$ P\bigg(  \frac{\bar{X}-\mu}{S/\sqrt{n}} \leq z_{\alpha}\bigg) = 1- \alpha $$
+and solve to find the $(1-\alpha)$ confidence bound $\bar{X} - z_{\alpha}\frac{s}{\sqrt{n}}$.\\
+\verb!Upper Confidence Bound:! With $(1-\alpha)$ confidence, $\mu$ is bounded by $\bar{X} +  z_{\alpha}\frac{s}{\sqrt{n}}$\\
+Note that when n is small, replace $z_{\alpha}$ by $t_{\alpha, n-1}$.
+
+\subsection{CI for the Variance of a Normal Population}
+\verb!Theorem:!  Let $X_{1}, ..., X_{n}$ be a SRS from a Normal($\mu, \sigma^2$) population, where both parameters are unknown.  The RV
+$$\frac{(n-1)S^2}{\sigma^2} = \frac{\sum^{n} (X_{i} - X)^2}{\sigma^2}	$$
+has a probability distribution called the $\chi^2$ distribution with n-1 dof.\\
+The density of chi is always positive and has long upper tails.  As n increases, the densities become more symmetric.\\
+Furthermore, we have that 
+$$  P \bigg( \chi_{1-\alpha/2, n-1} \leq \frac{(n-1)S^2}{\sigma^2} \leq \chi_{\alpha/2, n-1} \bigg) = 1- \alpha 	$$
+Hence, the $(1-\alpha)$ CI for the population variance $\sigma^2$ under the normal model is
+$$	\bigg[ \frac{(n-1)S^2}{\chi_{\alpha/2, n-1}} , \frac{(n-1)S^2}{\chi_{1-\alpha/2, n-1}}  \bigg]	$$
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+\end{multicols}
+\end{document}
